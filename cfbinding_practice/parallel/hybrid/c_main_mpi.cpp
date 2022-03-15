@@ -2,9 +2,9 @@
 #include <mpi.h>
 
 extern "C" {
-  void printc_myrank(MPI_Comm);
+  void printc_myrank(MPI_Fint);
 
-  //MPI_Fint f_MPI_Comm_c2f(MPI_Comm *comm) 
+  //MPI_Fint f_MPI_Comm_c2f(MPI_Comm *comm)
   //{
   //  return MPI_Comm_c2f(*comm);
   //}
@@ -14,13 +14,13 @@ extern "C" {
 
 
 int main(int argc, char *argv[]){
-  
+
   int ierr, myrank;
   MPI_Fint fmpicomm;
   ierr = MPI_Init(&argc, &argv);
   ierr = MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
 
-  fmpicomm = MPI_Comm_c2f(MPI_COMM_WORLD);  //convert MPI_Comm, C-pointer to MPI_FInt, fortran integer. This macro is defined in mpi.h
+  fmpicomm = MPI_Comm_c2f(MPI_COMM_WORLD);  //convert MPI_Comm, C-pointer to MPI_Fint, fortran integer. This macro is defined in mpi.h
 
   printf("1 myrank = %d\n", myrank);
 
