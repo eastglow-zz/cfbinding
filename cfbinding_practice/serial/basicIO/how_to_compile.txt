@@ -1,0 +1,13 @@
+1. Compile the fortran subroutine code in .o files
+
+2. Compile & link the c++ code with -lgfortran flag
+
+Example:
+	list of the codes:
+		f_subroutine.f90 - contains the fortran subroutines
+                cf_bind.h - contains extern "C" interface to load the fortran function on C
+		c_main.cpp - main code written in C
+
+mpif90 -c ./f_subroutine.f90
+mpicc -o call_f_on_c.exe ./c_main.cpp ./f_subroutine.f90 -lgfortran
+
